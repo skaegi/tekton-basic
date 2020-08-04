@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: basic-task
+spec:
+  steps:
+  - name: get-os-info
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args:
+    - uname -a;
+      cat /etc/os-release
+---      
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: pipeline
+spec:
+  tasks:
+    - name: pipeline-basic-task
+      taskRef:
+        name: basic-task
