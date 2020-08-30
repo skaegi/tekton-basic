@@ -5,10 +5,8 @@ metadata:
 spec:
   steps:
     - name: writefoo
-      image: ubuntu
+      image: alpine
       script: |
-        #!/usr/bin/env bash
-        set -xe
         du /workspace/source -s 
         echo 'foo' > $(workspaces.source.path)/foo
   workspaces:
@@ -21,10 +19,8 @@ metadata:
 spec:
   steps:
     - name: writefoo
-      image: ubuntu
+      image: alpine
       script: |
-        #!/usr/bin/env bash
-        set -xe
         du /workspace/source -s 
         echo 'bar' > $(workspaces.source.path)/bar
   workspaces:
@@ -37,12 +33,10 @@ metadata:
 spec:
   steps:
     - name: totals
-      image: ubuntu
+      image: alpine
       script: |
-        #!/usr/bin/env bash
-        set -xe
         du /workspace/source -s 
-        #x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "12" ]
+        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "12" ]
   workspaces:
     - name: source
 ---
