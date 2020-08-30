@@ -33,7 +33,7 @@ spec:
     - name: totals
       image: ubuntu
       command: ["bash", "-c"]
-      args: ["du $(workspaces.source.path) && ls -al $(workspaces.source.path)"]
+      args: ["x=$(du /workspace/source -s | awk '{print $1}' ) && ls -al $(workspaces.source.path) && [ \"$x\" != \"12\" ]"]
   workspaces:
     - name: source
 ---
