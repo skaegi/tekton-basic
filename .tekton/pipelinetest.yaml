@@ -36,7 +36,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "12" ]
+        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "1964" ]
   workspaces:
     - name: source
 ---
