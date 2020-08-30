@@ -35,7 +35,8 @@ spec:
       script: |
         #!/usr/bin/env bash
         set -xe
-        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "12" ]
+        du /workspace/source -s 
+        #x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "12" ]
   workspaces:
     - name: source
 ---
