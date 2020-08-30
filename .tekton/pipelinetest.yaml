@@ -18,7 +18,7 @@ metadata:
   name: bartask
 spec:
   steps:
-    - name: writefoo
+    - name: writebar
       image: alpine
       script: |
         du /workspace/source -s 
