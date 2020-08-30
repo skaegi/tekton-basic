@@ -6,8 +6,11 @@ spec:
   steps:
     - name: writefoo
       image: ubuntu
-      command: ["bash", "-c"]
-      args: ["echo 'foo' > $(workspaces.source.path)/foo"]
+      script: |
+        #!/usr/bin/env bash
+        set -xe
+        du /workspace/source -s 
+        echo 'foo' > $(workspaces.source.path)/foo
   workspaces:
     - name: source
 ---
@@ -19,8 +22,11 @@ spec:
   steps:
     - name: writefoo
       image: ubuntu
-      command: ["bash", "-c"]
-      args: ["echo 'bar' > $(workspaces.source.path)/bar"]
+      script: |
+        #!/usr/bin/env bash
+        set -xe
+        du /workspace/source -s 
+        echo 'bar' > $(workspaces.source.path)/bar
   workspaces:
     - name: source
 ---
