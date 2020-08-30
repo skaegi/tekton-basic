@@ -27,6 +27,6 @@ metadata:
 spec:
   triggers:
     - binding:
-        name: binding
+        name: binding-test
       template:
-        name: template
+        name: template-test
