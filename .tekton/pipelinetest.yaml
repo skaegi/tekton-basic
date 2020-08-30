@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: fooTask
+  name: footask
 spec:
   steps:
     - name: writefoo
@@ -14,7 +14,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: barTask
+  name: bartask
 spec:
   steps:
     - name: writefoo
@@ -27,7 +27,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: foobarTask
+  name: foobartask
 spec:
   steps:
     - name: totals
@@ -47,20 +47,20 @@ spec:
   tasks:
     - name: foo
       taskRef:
-        name: fooTask
+        name: footask
       workspaces:
         - name: source
           workspace: pipeline-source
     - name: bar
       taskRef:
-        name: barTask
+        name: bartask
       workspaces:
         - name: source
           workspace: pipeline-source
     - name: afterfoobar
       runAfter: [foo, bar]
       taskRef:
-        name: foobarTask
+        name: foobartask
         workspaces:
           - name: source
       workspaces:
