@@ -15,6 +15,9 @@ spec:
             args: ["echo 'foo' > $(workspaces.source.path)/foo"]
         workspaces:
           - name: source
+      workspaces:
+        - name: source
+          workspace: pipeline-source
     - name: bar
       taskSpec:
         steps:
