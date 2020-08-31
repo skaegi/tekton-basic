@@ -22,7 +22,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 5 && ls -al $(workspaces.source.path) && exit 1)
+        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 600 && touch ggg && ls -al $(workspaces.source.path) && exit 1)
   workspaces:
     - name: source
 ---
