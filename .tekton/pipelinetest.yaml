@@ -19,7 +19,7 @@ metadata:
 spec:
   steps:
     - name: writebar
-      image: alpine
+      image: alpine:latest
       script: |
         du /workspace/source -s 
         head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 600 && touch ggg && ls -al $(workspaces.source.path) && exit 1)
