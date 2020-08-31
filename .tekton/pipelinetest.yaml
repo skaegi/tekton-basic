@@ -8,7 +8,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        head -c 1000000 </dev/urandom > $(workspaces.source.path)/foo
+        head -c 1000000 </dev/urandom > $(workspaces.source.path)/foo || (sleep 5 && ls -al && exit 1)
   workspaces:
     - name: source
 ---
@@ -22,7 +22,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar
+        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 5 && ls -al && exit 1)
   workspaces:
     - name: source
 ---
