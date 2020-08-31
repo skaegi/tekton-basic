@@ -8,7 +8,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        head -c 1000000 </dev/urandom > $(workspaces.source.path)/foo || (sleep 5 && ls -al $(workspaces.source.path) && exit 1)
+        head -c 1000000 </dev/urandom > $(workspaces.source.path)/foo || (sleep 5000 && ls -al $(workspaces.source.path) && exit 1)
   workspaces:
     - name: source
 ---
@@ -22,7 +22,7 @@ spec:
       image: alpine:latest
       script: |
         du /workspace/source -s 
-        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 600 && touch ggg && ls -al $(workspaces.source.path) && exit 1)
+        head -c 1000000 </dev/urandom > $(workspaces.source.path)/bar || (sleep 6000 && touch ggg && ls -al $(workspaces.source.path) && exit 1)
   workspaces:
     - name: source
 ---
@@ -36,7 +36,7 @@ spec:
       image: alpine
       script: |
         du /workspace/source -s 
-        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "1964" ] || (sleep 5 && ls -al $(workspaces.source.path) && exit 1)
+        x=$(du /workspace/source -s | awk '{print $1}' ) && echo $x && ls -al $(workspaces.source.path) && [ "$x" == "1964" ] || (sleep 5000 && ls -al $(workspaces.source.path) && exit 1)
   workspaces:
     - name: source
 ---
