@@ -8,7 +8,7 @@ spec:
   tasks:
     - name: foo
       taskSpec:
-        name: fooTask
+        name: footask
         steps:
           - name: writefoo
             image: ubuntu
@@ -21,7 +21,7 @@ spec:
           workspace: pipeline-source
     - name: bar
       taskSpec:
-        name: barTask
+        name: bartask
         steps:
           - name: writebar
             image: ubuntu
@@ -35,7 +35,7 @@ spec:
     - name: afterfoobar
       runAfter: [foo, bar]
       taskSpec:
-        name: foobarTask
+        name: foobartask
         steps:
           - name: totals
             image: ubuntu
