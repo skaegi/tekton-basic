@@ -12,8 +12,8 @@ spec:
         steps:
           - name: writefoo
             image: ubuntu
-            command: ["bash", "-c"]
-            args: ["echo 'foo' > $(workspaces.source.path)/foo"]
+            script: |
+              echo 'foo' > $(workspaces.source.path)/foo
         workspaces:
           - name: source
       workspaces:
