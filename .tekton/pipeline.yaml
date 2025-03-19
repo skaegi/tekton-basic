@@ -3,10 +3,17 @@ kind: Task
 metadata:
   name: basic-task
 spec:
+  params:
+  - name: integration
   steps:
   - name: get-os-info
     image: alpine
+    env:
+    - name: INTEGRATION
+      value: $(params.integration)
     script: |
+      apk add jq
+      echo $INTEGRATION | jq .
       echo hi; uname -a;
       cat /etc/os-release
 ---      
@@ -15,7 +22,12 @@ kind: Pipeline
 metadata:
   name: pipeline
 spec:
+  params:
+  - name: integration
   tasks:
-    - name: pipeline-basic-task
-      taskRef:
-        name: basic-task
+  - name: pipeline-basic-task
+    taskRef:
+      name: basic-task
+    params:
+    - name: integration
+      value: $(params.integration)
