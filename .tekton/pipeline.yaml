@@ -6,9 +6,8 @@ spec:
   steps:
   - name: get-os-info
     image: alpine
-    command: ["/bin/sh", "-c"]
-    args:
-    - uname -a;
+    script: |
+      echo hi; uname -a;
       cat /etc/os-release
 ---      
 apiVersion: tekton.dev/v1beta1
